@@ -91,6 +91,7 @@ module DocusignRest
     def initialize_net_http_ssl(uri)
       http = Net::HTTP.new(uri.host, uri.port)
 
+      http.set_debug_output($stdout)
       http.use_ssl = uri.scheme == 'https'
 
       if defined?(Rails) && Rails.env.test?
